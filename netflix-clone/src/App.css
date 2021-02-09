@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  height: 435px;
+  border: 1px solid black;
+  background-image: url("./netflix-image/2b0s0iMNl9CgrCMz0VGKlMw3vZw.jpg");
+}
+.header-up {
+  display: flex;
+  height: 85px;
+}
