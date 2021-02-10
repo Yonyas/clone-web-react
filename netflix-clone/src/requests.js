@@ -1,6 +1,6 @@
 // https://api.themoviedb.org/3/movie/550?api_key=ee087fa90f139a6bbe8746b27040e75d
 
-const APIKey = 'ee087fa90f139a6bbe8746b27040e75d';
+const APIKey = "ee087fa90f139a6bbe8746b27040e75d";
 
 const requests = {
   fetchTrending: `/trending/all/week?api_key=${APIKey}&language=en-US`,
