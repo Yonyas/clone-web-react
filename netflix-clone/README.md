@@ -26,6 +26,8 @@ useEffect(() => {
   
   ### 스크롤다운할 때 nav 배경 검정색으로 변경
   ```
+    const [show, setShow] = useState(false);
+
     useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
