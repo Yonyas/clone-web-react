@@ -6,13 +6,13 @@ axios 이용해서 api 가져오기
 
 
 axios에 baseURL 설정
-```
+```javascript
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
 });
 ```
 정보 받아와서 request에 넣기
-```
+```javascript
 useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchTrending);
@@ -25,7 +25,7 @@ useEffect(() => {
   ```
   
   ### 스크롤다운할 때 nav 배경 검정색으로 변경
-  ```
+  ```javascript
     const [show, setShow] = useState(false);
 
     useEffect(() => {
@@ -44,7 +44,7 @@ useEffect(() => {
   `npm i react-youtube`
   `npm i movie-trailer`
   
-  ```
+  ```javascript
   import YouTube from "react-youtube";
   import movieTrailer from "movie-trailer";
   
