@@ -40,4 +40,36 @@ useEffect(() => {
   }, []);
   ```
   
+  ### 포스터 클릭하면 유튜브 예고편 뜨기 - react에서 youtube trailer 이용하는 방법
+  `npm i react-youtube`
+  `npm i movie-trailer`
+  
+  ```
+  import YouTube from "react-youtube";
+  import movieTrailer from "movie-trailer";
+  
+  const [trailerUrl, setTrailerUrl] = useState("");
+
+  const handleClick = (movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(movie?.name || "")
+        .then((url) => {
+          //https://youtu.be/XtMThy8QKqU
+          //new URL(url).search  <-- 동영상 주소 XtMT... 만 추출
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerUrl(urlParams.get("v"));
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+  
+  return(
+  <img onClick = {() => {handleClick(movie)} />                  // movie 는 영화api 
+  {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+  )
+  ```
+  
+  
  
