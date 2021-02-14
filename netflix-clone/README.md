@@ -38,6 +38,10 @@ useEffect(() => {
       window.removeEventListener("scroll");
     };
   }, []);
+  
+  return (
+  <nav className={show ? "black" : null}></nav>
+  )
   ```
   
   ### 포스터 클릭하면 유튜브 예고편 뜨기 - react에서 youtube trailer 이용하는 방법
