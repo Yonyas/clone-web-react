@@ -4,6 +4,7 @@
   position: relative;
   height: 400px;
   background-size: cover;
+  z-index: 1;
 }
 .banner__contents {
   margin-left: 20px;
@@ -37,7 +38,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 .banner__fadeBottom {
@@ -51,5 +52,4 @@
     rgba(37, 37, 37, 0.61),
     #111
   );
-  z-index: 100;
 }

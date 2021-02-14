@@ -1,0 +1,24 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  padding: 13px;
+  height: 50px;
+  z-index: 100;
+  /* animation */
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
+
+.netflix-logo {
+  width: 80px;
+  height: 25px;
+}
+.profile {
+  width: 25px;
+  height: 25px;
+}
+.black {
+  background-color: #111;
+}
