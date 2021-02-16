@@ -10,22 +10,30 @@ function App() {
   const [trailerUrl, setTrailerUrl] = useState("");
   const [currentMovie, setCurrentMovie] = useState("");
 
+  const playTrailer = (response) => {
+    setTrailerUrl(response);
+    setCurrentMovie("NETFLIX ORIGINALS");
+  };
+
   //when click movie poster
-  const handleClick = (movie, category) => {
-    setTrailerUrl("");
-    movieTrailer(
+  const handleClick = async (movie, category) => {
+    // setTrailerUrl("");
+    let response = await movieTrailer(
       movie?.original_name ||
         movie?.original_title ||
         movie?.title ||
         movie?.name ||
         "",
       { id: true }
-    )
-      .then((id) => {
-        setTrailerUrl(id);
-        setCurrentMovie(category); //내가 클릭한 영화 카테고리 ex) NETFLIX ORIGINALS
-      })
-      .catch((error) => console.log(error));
+    );
+
+    playTrailer(response);
+
+    // .then((id) => {
+    //   setTrailerUrl(id);
+    //   setCurrentMovie(category); //내가 클릭한 영화 카테고리 ex) NETFLIX ORIGINALS
+    // })
+    // .catch((error) => console.log(error));
   };
 
   return (
