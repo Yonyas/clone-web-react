@@ -29,7 +29,7 @@ function App() {
 
     playTrailer(response);
 
-    // .then((id) => {
+    // .then((id) => {`
     //   setTrailerUrl(id);
     //   setCurrentMovie(category); //내가 클릭한 영화 카테고리 ex) NETFLIX ORIGINALS
     // })
