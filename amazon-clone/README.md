@@ -5,8 +5,8 @@
 ## React router
 
 라우터란? www.yonyas.com/login, www.yonyas.com/main 이런 식으로 주소 분리해주는 것
-해야할 일 `npm install react-router`, `yarn add react-router-dom`
-코드
+해야할 일 `npm install react-router`,
+`yarn add react-router-dom`
 
 ```js
 function App() {
@@ -30,11 +30,11 @@ function App() {
 }
 ```
 
-## Header.js - Link 사용
+## Header.js
+
+### Link 사용
 
 href와의 차이점 : Link는 refresh가 안 된다. 빠름.
-
-코드
 
 ```js
 import { Link } from "react-router-dom";
@@ -44,14 +44,13 @@ import { Link } from "react-router-dom";
 </Link>;
 ```
 
-## Header.js - searchbox icon 넣기
+### search input(검색창) 옆에 icon 넣기
 
 사이트 https://material-ui.com/components/icons/#icons
 
-material-ui.com 들어가서 `npm install @material-ui/core`
-`npm install @material-ui/icons` 두개 다 설치
-
-코드
+- material-ui.com 들어가서 `npm install @material-ui/core`
+  `npm install @material-ui/icons` 두개 다 설치
+- 사이즈조절할 때는 !important 해야 한다.
 
 ```js
 import SearchIcon from "@material-ui/icons/Search";
@@ -59,4 +58,26 @@ import SearchIcon from "@material-ui/icons/Search";
 <SearchIcon className="header__searchIcon" />;
 ```
 
-팁: 사이즈조절할 때는 !important 해야 한다.
+### search input focus 할 때 테두리 생기기
+
+![input](../image/input.png)
+
+- border vs outline : border를 주면 안쪽의 내용이 흐트러지니까 이럴때는 outline 이 좋다.
+- input:focus 일 때 전체 div 에 테두리 주기 : focus-within 사용한다. 그래야 input 즉 적용하려는 div 의 안쪽을 클릭해도 focus 인식이 된다.
+- outline 에 radius 주기 : border-radius를 사용하면서 안쪽 내용이 흐트러지지 않게 하기
+
+```css
+.header__search:focus-within::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  border: 2px solid orange;
+  border-radius: 3px;
+}
+```
+
+-1px을 줘야 테두리가 바깥에 생긴다.

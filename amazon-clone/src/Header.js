@@ -15,7 +15,7 @@ function Header() {
           ></img>
         </Link>
         <div className="header__location">
-          Delever to Jiyon <span>Ganseogu 077</span>
+          Delever to Yonyas <span>Gangnam 099</span>
         </div>
         <div className="header__search">
           <select className="header__searchSelect">
@@ -44,7 +44,7 @@ function Header() {
             <a href="#">Customer Service</a>
           </li>
           <li>
-            <a href="#">Jiyon's Amazon.com</a>
+            <a href="#">Yonyas's Amazon.com</a>
           </li>
           <li>
             <a href="#">Buy Again</a>
