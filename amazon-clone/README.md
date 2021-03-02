@@ -60,11 +60,11 @@ import SearchIcon from "@material-ui/icons/Search";
 
 ### search input focus 할 때 테두리 생기기
 
-![input](../image/input.png)
+![input](https://user-images.githubusercontent.com/60434382/109580069-5c7f4c00-7b3d-11eb-9098-1597240f0dc7.png)
 
 - border vs outline : border를 주면 안쪽의 내용이 흐트러지니까 이럴때는 outline 이 좋다.
 - input:focus 일 때 전체 div 에 테두리 주기 : focus-within 사용한다. 그래야 input 즉 적용하려는 div 의 안쪽을 클릭해도 focus 인식이 된다.
-- outline 에 radius 주기 : border-radius를 사용하면서 안쪽 내용이 흐트러지지 않게 하기
+- border-radius를 사용하면서 안쪽 내용이 흐트러지지 않게 하기 : pseudo 사용
 
 ```css
 .header__search:focus-within::before {
