@@ -81,3 +81,28 @@ import SearchIcon from "@material-ui/icons/Search";
 ```
 
 -1px을 줘야 테두리가 바깥에 생긴다.
+
+### Material-UI Select API 사용하기
+
+임포트 후 사용한다.
+여기서는 option의 글씨에 따라 select의 크기가 바뀌도록 autoWidth를 사용했다.
+
+```js
+import Select from "@material-ui/core/Select";
+
+<Select
+  className="header__searchSelect"
+  value={selectedOption}
+  onChange={(e) => {
+    setSelectedOption(e.target.value);
+  }}
+  autoWidth
+>
+  <option className="header__option" value="All">
+    All
+  </option>
+  <option className="header__option" value="arts-craft">
+    Arts & Craft
+  </option>
+</Select>;
+```
