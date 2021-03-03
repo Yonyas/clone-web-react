@@ -91,28 +91,6 @@
 .header__searchIcon:hover {
   background-color: #cd9042;
 }
-.header__bottom {
-  display: flex;
-  align-items: center;
-  background-color: #232f3e;
-  height: 30px;
-}
-.header__bottom ul {
-  display: flex;
-}
-.header__bottom li {
-  margin-right: 10px;
-}
-.header__bottom li a {
-  padding: 4px;
-  color: white;
-  font-size: 15px;
-  line-height: 30px;
-}
-.header__bottom li a:hover {
-  border: 1px solid white;
-  border-radius: 3px;
-}
 .header__nav {
   display: flex;
   justify-content: space-evenly;
@@ -146,4 +124,35 @@
   color: orange;
   font-weight: bolder;
   /* z-index: 1000; */
+}
+
+.header__bottom {
+  display: flex;
+  align-items: center;
+  background-color: #232f3e;
+  height: 40px;
+}
+.header__bottom ul {
+  display: flex;
+}
+.header__bottom li {
+  margin-right: 10px;
+}
+.header__bottom li a {
+  position: relative;
+  padding: 4px;
+  color: white;
+  font-size: 15px;
+  line-height: 30px;
+}
+.header__bottom li a:hover:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border: 1px solid white;
+  border-radius: 3px;
 }
