@@ -106,3 +106,61 @@ import Select from "@material-ui/core/Select";
   </option>
 </Select>;
 ```
+
+# Home.js - background image
+
+## image slider
+
+슬라이드를 위해 리스트 태그를 만들고 div 태그로 감싸줬다.
+home 클래스는 전체화면을 잡는다.
+ol 태그는 현재 가지고 있는 배경갯수만큼, 여기서는 5개니까 width: 500%; 를 준다. css transform 을 이용해서, prev나 next 버튼을 누를 때 보이는 화면이 바뀌게끔 좌표를 바꿔준다.
+
+```jsx
+const [Xcoord, setXcoord] = useState(0);
+const [counter, setCounter] = useState(0);
+
+const onClickNext = (e) => {
+  setCounter((prevCounter) => prevCounter + 1);
+};
+
+const onClickPrev = (e) => {
+  setCounter((prevCounter) => prevCounter - 1);
+};
+
+useEffect(() => {
+  console.log(counter);
+  setXcoord(window.innerWidth * counter);
+}, [counter]);
+```
+
+useState는 비동기기 때문에 useEffect를 이용해서 '바뀐' counter를 적용할 수 있도록 했다.
+setCounter(), setXcoord() 연속으로 쓰면 안된다.
+
+```jsx
+<div className="home">
+  <ol
+    className="home__imgSlide"
+    style={{ transform: `translateX(-${Xcoord}px)` }}
+  >
+    <li>
+      <div className="home__imgSize">
+        <div className="home__imgCenter">
+          <a className="home__toAmazonShips" href="/">
+            <img
+              className="home__Img"
+              src={background1}
+              alt="background1 - ship over 45 million products around the world"
+            ></img>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
+```
+
+## 화면을 줄일 때 항상 이미지의 가운데만 보여주면서 축소
+
+https://velog.io/@yonyas/cssimg%ED%83%9C%EA%B7%B8%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EA%B0%80-%ED%95%AD%EC%83%81-center%EB%A5%BC-%EB%B3%B4%EC%97%AC%EC%A3%BC%EB%8F%84%EB%A1%9D-%EB%B0%98%EC%9D%91%ED%98%95-%EB%B0%B0%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0
+
+벨로그에 정리.
