@@ -39,36 +39,15 @@
   }
 }
 /* prev next arrow */
+
 .home__arrow a {
-  position: fixed;
   display: block;
-  width: 100px;
-  height: 300px;
   cursor: pointer;
   z-index: 1000;
-}
-
-.home__arrow a:first-child {
   position: absolute;
-  left: 0;
-  top: 0;
-}
-.home__arrow a:last-child {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.home__arrow .arrow {
   width: 50px;
   height: 80px;
   position: absolute;
   top: 106px;
   font-size: 40px;
-  font-weight: lighter;
-}
-.home__arrow .back__arrow {
-  left: 26px;
-}
-.home__arrow .forward__arrow {
-  right: 26px;
 }

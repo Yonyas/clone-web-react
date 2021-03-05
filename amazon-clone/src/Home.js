@@ -11,6 +11,9 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 function Home() {
   const [Xcoord, setXcoord] = useState(0);
   const [counter, setCounter] = useState(0);
+  const [leftPosition, setLeftPosition] = useState(26);
+  const [rightPosition, setRightPosition] = useState(26);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const onClickNext = (e) => {
     setCounter((prevCounter) => prevCounter + 1);
@@ -25,13 +28,36 @@ function Home() {
     setXcoord(window.innerWidth * counter);
   }, [counter]);
 
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+
+    setLeftPosition(
+      screenWidth > 1500 ? (window.innerWidth - 1500) / 2 + 30 : 30
+    );
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, [screenWidth]);
+
+  const updateWidth = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
   return (
     <div className="home">
       <div className="home__arrow">
-        <a onClick={onClickPrev}>
+        <a onClick={onClickPrev} style={{ left: `${leftPosition}px` }}>
           <ArrowBackIosIcon className="arrow back__arrow" />
         </a>
-        <a onClick={onClickNext}>
+        <a
+          onClick={onClickNext}
+          style={
+            screenWidth > 1000
+              ? { right: `${leftPosition}px` }
+              : { right: null, left: "916px" }
+          }
+        >
           <ArrowForwardIosIcon className="arrow forward__arrow" />
         </a>
       </div>
