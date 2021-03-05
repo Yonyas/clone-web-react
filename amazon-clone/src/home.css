@@ -1,5 +1,17 @@
 .home {
   position: relative;
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+}
+.home__imgSlide {
+  display: flex;
+  width: 500%;
+  height: 600px;
+  /* transform: translateX(-1500px); */
+}
+.home__imgSlide li {
+  width: 100%;
 }
 
 .home__imgSize {
@@ -27,9 +39,28 @@
   }
 }
 /* prev next arrow */
-.home__arrow {
+.home__arrow a {
+  position: fixed;
+  display: block;
+  width: 100px;
+  height: 300px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.home__arrow a:first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.home__arrow a:last-child {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .home__arrow .arrow {
+  width: 50px;
+  height: 80px;
   position: absolute;
   top: 106px;
   font-size: 40px;
