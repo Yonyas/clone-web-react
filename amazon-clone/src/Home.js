@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./home.css";
 import BackImg from "./BackImg";
 import background1 from "./images/sub/background1.jpg";
@@ -23,17 +23,15 @@ function Home() {
     setCounter((prevCounter) => prevCounter - 1);
   };
 
-  useEffect(() => {
-    console.log(counter);
+  // 화면사이즈 변경할 때, 이전 다음버튼 눌러서 카운터 바뀔 때
+  useLayoutEffect(() => {
     if (counter > 4) {
       setCounter(0);
     } else if (counter < 0) {
       setCounter(4);
     }
     setXcoord(window.innerWidth * counter);
-  }, [counter]);
 
-  useEffect(() => {
     window.addEventListener("resize", updateWidth);
 
     setArrowPosition(
@@ -43,7 +41,7 @@ function Home() {
     return () => {
       window.removeEventListener("resize", updateWidth);
     };
-  }, [screenWidth]);
+  }, [screenWidth, counter]);
 
   const updateWidth = () => {
     setScreenWidth(window.innerWidth);
@@ -68,33 +66,46 @@ function Home() {
       </div>
       <ol
         className="home__imgSlide"
-        style={{ transform: `translateX(-${Xcoord}px)` }}
+        style={{
+          transform: `translateX(-${Xcoord}px)`,
+          width: `${screenWidth * 5}px`,
+        }}
       >
-        {/* list component - <a className>, <img background, alt> */}
         <BackImg
           link=""
           imgSrc={background1}
           imgAlt="background1 - ship over 45 million products around the world"
+          screenWidth={screenWidth}
+          show={counter === 0 ? "visible" : "hidden"}
         />
         <BackImg
           link=""
           imgSrc={background2}
           imgAlt="background2 - Discover our beauty selection"
+          screenWidth={screenWidth}
+          show={counter === 1 ? "visible" : "hidden"}
+          left="900px"
         />
         <BackImg
           link=""
           imgSrc={background3}
           imgAlt="background3 - Shop computers and accessories"
+          screenWidth={screenWidth}
+          show={counter === 2 ? "visible" : "hidden"}
         />
         <BackImg
           link=""
           imgSrc={background4}
           imgAlt="background4 - Refresh your space"
+          screenWidth={screenWidth}
+          show={counter === 3 ? "visible" : "hidden"}
         />
         <BackImg
           link=""
           imgSrc={background5}
           imgAlt="background5 - Shop toys and games"
+          screenWidth={screenWidth}
+          show={counter === 4 ? "visible" : "hidden"}
         />
       </ol>
     </div>
