@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./home.css";
+import BackImg from "./BackImg";
 import background1 from "./images/sub/background1.jpg";
 import background2 from "./images/sub/background2.jpg";
 import background3 from "./images/sub/background3.jpg";
@@ -11,8 +12,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 function Home() {
   const [Xcoord, setXcoord] = useState(0);
   const [counter, setCounter] = useState(0);
-  const [leftPosition, setLeftPosition] = useState(26);
-  const [rightPosition, setRightPosition] = useState(26);
+  const [arrowPosition, setArrowPosition] = useState(26);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const onClickNext = (e) => {
@@ -23,22 +23,25 @@ function Home() {
     setCounter((prevCounter) => prevCounter - 1);
   };
 
-  useEffect(() => {
-    console.log(counter);
+  // 화면사이즈 변경할 때, 이전 다음버튼 눌러서 카운터 바뀔 때
+  useLayoutEffect(() => {
+    if (counter > 4) {
+      setCounter(0);
+    } else if (counter < 0) {
+      setCounter(4);
+    }
     setXcoord(window.innerWidth * counter);
-  }, [counter]);
 
-  useEffect(() => {
     window.addEventListener("resize", updateWidth);
 
-    setLeftPosition(
+    setArrowPosition(
       screenWidth > 1500 ? (window.innerWidth - 1500) / 2 + 30 : 30
     );
 
     return () => {
       window.removeEventListener("resize", updateWidth);
     };
-  }, [screenWidth]);
+  }, [screenWidth, counter]);
 
   const updateWidth = () => {
     setScreenWidth(window.innerWidth);
@@ -47,14 +50,14 @@ function Home() {
   return (
     <div className="home">
       <div className="home__arrow">
-        <a onClick={onClickPrev} style={{ left: `${leftPosition}px` }}>
+        <a onClick={onClickPrev} style={{ left: `${arrowPosition}px` }}>
           <ArrowBackIosIcon className="arrow back__arrow" />
         </a>
         <a
           onClick={onClickNext}
           style={
             screenWidth > 1000
-              ? { right: `${leftPosition}px` }
+              ? { right: `${arrowPosition}px` }
               : { right: null, left: "916px" }
           }
         >
@@ -63,73 +66,47 @@ function Home() {
       </div>
       <ol
         className="home__imgSlide"
-        style={{ transform: `translateX(-${Xcoord}px)` }}
+        style={{
+          transform: `translateX(-${Xcoord}px)`,
+          width: `${screenWidth * 5}px`,
+        }}
       >
-        <li>
-          <div className="home__imgSize">
-            <div className="home__imgCenter">
-              <a className="home__toAmazonShips" href="/">
-                <img
-                  className="home__Img"
-                  src={background1}
-                  alt="background1 - ship over 45 million products around the world"
-                ></img>
-              </a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div className="home__imgSize">
-            <div className="home__imgCenter">
-              <a className="home__toAmazonShips" href="/">
-                <img
-                  className="home__Img"
-                  src={background2}
-                  alt="background1 - ship over 45 million products around the world"
-                ></img>
-              </a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div className="home__imgSize">
-            <div className="home__imgCenter">
-              <a className="home__toAmazonShips" href="/">
-                <img
-                  className="home__Img"
-                  src={background3}
-                  alt="background1 - ship over 45 million products around the world"
-                ></img>
-              </a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div className="home__imgSize">
-            <div className="home__imgCenter">
-              <a className="home__toAmazonShips" href="/">
-                <img
-                  className="home__Img"
-                  src={background4}
-                  alt="background1 - ship over 45 million products around the world"
-                ></img>
-              </a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div className="home__imgSize">
-            <div className="home__imgCenter">
-              <a className="home__toAmazonShips" href="/">
-                <img
-                  className="home__Img"
-                  src={background5}
-                  alt="background1 - ship over 45 million products around the world"
-                ></img>
-              </a>
-            </div>
-          </div>
-        </li>
+        <BackImg
+          link=""
+          imgSrc={background1}
+          imgAlt="background1 - ship over 45 million products around the world"
+          screenWidth={screenWidth}
+          show={counter === 0 ? "visible" : "hidden"}
+        />
+        <BackImg
+          link=""
+          imgSrc={background2}
+          imgAlt="background2 - Discover our beauty selection"
+          screenWidth={screenWidth}
+          show={counter === 1 ? "visible" : "hidden"}
+          left="900px"
+        />
+        <BackImg
+          link=""
+          imgSrc={background3}
+          imgAlt="background3 - Shop computers and accessories"
+          screenWidth={screenWidth}
+          show={counter === 2 ? "visible" : "hidden"}
+        />
+        <BackImg
+          link=""
+          imgSrc={background4}
+          imgAlt="background4 - Refresh your space"
+          screenWidth={screenWidth}
+          show={counter === 3 ? "visible" : "hidden"}
+        />
+        <BackImg
+          link=""
+          imgSrc={background5}
+          imgAlt="background5 - Shop toys and games"
+          screenWidth={screenWidth}
+          show={counter === 4 ? "visible" : "hidden"}
+        />
       </ol>
     </div>
   );
