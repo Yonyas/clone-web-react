@@ -1,9 +1,10 @@
 .header__top {
   display: flex;
+  height: 67px;
   align-items: center;
   background-color: #131921;
   color: white;
-  font-size: 10px;
+  font-size: 13px;
 }
 .header__logo {
   width: 80px;
@@ -11,18 +12,59 @@
   margin: 10px 20px 0 10px;
 }
 .header__location {
+  display: flex;
+  align-items: flex-end;
   margin-right: 10px;
+  text-align: left;
+}
+.header__locationImg {
+  object-fit: none;
+  object-position: -70px -305px;
+  width: 19px;
+  height: 22px;
+  margin-right: 3px;
 }
 .header__location span {
   display: block;
-  text-align: center;
+  text-align: left;
 }
+/* search box */
 .header__search {
   display: flex;
   flex: 1;
   position: relative;
-  /* border: none; */
-  margin: 20px;
+}
+
+.header__searchSelect {
+  position: relative;
+  font-size: 10px;
+  background-color: #f3f3f3;
+  border-radius: 3px 0 0 3px;
+  border: none;
+  appearance: none;
+}
+.header__searchSelect .MuiSelect-root {
+  font-size: 13px;
+  padding-left: 5px;
+}
+.header__searchSelect:focus {
+  outline: none;
+}
+.header__searchSelect::before {
+  display: none;
+}
+
+.header__option {
+  background-color: white;
+  margin: 2px;
+}
+
+.header__searchInput {
+  width: 100%;
+  border: none;
+}
+.header__searchInput:focus {
+  outline: none;
 }
 .header__search:focus-within::before {
   content: "";
@@ -32,54 +74,63 @@
   bottom: -1px;
   left: -1px;
   right: -1px;
-  border: 2px solid orange;
+  border: 3px solid orange;
   border-radius: 3px;
-}
-.header__search:focus-within {
-  /* box-shadow: 0 0 3pt 2pt red; */
-  /* border: 2px solid orange; */
-  /* outline: 2px solid orange; */
+  z-index: 1000;
 }
 
-.header__searchSelect {
-  width: 40px;
-  background-color: #f3f3f3;
-  border-radius: 3px 0 0 3px;
-  border: none;
-}
-.header__searchSelect:hover {
-  background-color: #dadada;
-}
-
-.header__searchInput {
-  width: 100%;
-  /* margin: 0px; */
-  border: none;
-}
-.header__searchInput:focus {
-  outline: none;
-}
-.header__searchInput:focus {
-  /* border: 2px solid orange; */
-  /* outline: 2px solid red; */
-}
-/* input focus 하면 border orange show */
 .header__searchIcon {
   background-color: orange;
   color: black;
   padding: 4px;
-  height: 22px !important;
+  height: 32px !important;
+  width: 32px !important;
   border-radius: 0 3px 3px 0;
   cursor: pointer;
 }
 .header__searchIcon:hover {
   background-color: #cd9042;
 }
+.header__nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header__nav span {
+  color: #fff;
+}
+.header__linkblock {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.header__shoppingCart {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  position: relative;
+  height: 54px;
+}
+.header__cartImg {
+  object-fit: none;
+  object-position: -9px -340px;
+  width: 45px;
+  height: 28px;
+}
+.header__shoppingCart .header__cartNum {
+  position: absolute;
+  top: 7px;
+  left: 29px;
+  font-size: 15px;
+  color: orange;
+  font-weight: bolder;
+  /* z-index: 1000; */
+}
+
 .header__bottom {
   display: flex;
   align-items: center;
   background-color: #232f3e;
-  height: 30px;
+  height: 40px;
 }
 .header__bottom ul {
   display: flex;
@@ -88,12 +139,20 @@
   margin-right: 10px;
 }
 .header__bottom li a {
+  position: relative;
   padding: 4px;
   color: white;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 30px;
 }
-.header__bottom li a:hover {
+.header__bottom li a:hover:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
   border: 1px solid white;
   border-radius: 3px;
 }

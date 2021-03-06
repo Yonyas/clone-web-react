@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
+import Select from "@material-ui/core/Select";
+import sprite from "./images/sprite.png";
 
 function Header() {
+  const [selectedOption, setSelectedOption] = useState("All");
+
   return (
     <nav className="header">
       <div className="header__top">
@@ -15,22 +19,84 @@ function Header() {
           ></img>
         </Link>
         <div className="header__location">
-          Delever to Yonyas <span>Gangnam 099</span>
+          <img
+            className="header__locationImg"
+            src={sprite}
+            alt="location"
+          ></img>
+          <div>
+            Delever to Yonyas
+            <span>
+              <b>Gangnam 099</b>
+            </span>
+          </div>
         </div>
+        {/* search box */}
         <div className="header__search">
-          <select className="header__searchSelect">
-            <option value="All">All</option>
-            <option value="arts-craft">Arts & Craft</option>
-            <option value="automotive">automotive</option>
-            <option value="baby">baby</option>
-          </select>
+          <Select
+            className="header__searchSelect"
+            value={selectedOption}
+            onChange={(e) => {
+              setSelectedOption(e.target.value);
+            }}
+            autoWidth
+            // style={{ width: `${stringWidth + 100}` }}
+          >
+            <option className="header__option" value="All">
+              All
+            </option>
+            <option className="header__option" value="arts-craft">
+              Arts & Craft
+            </option>
+            <option className="header__option" value="automotive">
+              automotive
+            </option>
+            <option className="header__option" value="baby">
+              baby
+            </option>
+            <option className="header__option" value="beauty-personal">
+              Beauty & Personal Care
+            </option>
+            <option className="header__option" value="books">
+              Books
+            </option>
+            <option className="header__option" value="computers">
+              Computers
+            </option>
+          </Select>
+
           <input type="text" className="header__searchInput" />
           <SearchIcon className="header__searchIcon" />
         </div>
-        <div className="header__language"></div>
-        <div className="header__account"></div>
-        <div className="header__order"></div>
-        <div className="header__shopping-cart"></div>
+        {/* 4 Links */}
+        <div className="header__nav">
+          <div className="header__language"></div>
+          <Link to="/" className="header__link">
+            <div className="header__account header__linkblock">
+              <span className="">Hello, Yonyas </span>
+              <span className="">
+                <b>Account & Lists</b>
+              </span>
+            </div>
+          </Link>
+          <Link to="/" className="header__link">
+            <div className="header__order  header__linkblock">
+              <span className="">Returns </span>
+              <span className="">
+                <b>& Orders</b>
+              </span>
+            </div>
+          </Link>
+          <Link to="/checkout" className="header__link">
+            <div className="header__shoppingCart header__linkblock">
+              <img className="header__cartImg" src={sprite} alt="cart"></img>
+              <span className="header__cartNum">0</span>
+              <span>
+                <b>Cart</b>
+              </span>
+            </div>
+          </Link>
+        </div>
       </div>
       <div className="header__bottom">
         <ul>
