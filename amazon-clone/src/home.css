@@ -8,6 +8,7 @@
   display: flex;
   width: 500%;
   height: 600px;
+  /* transition: all 0.5s; */
   /* transform: translateX(-1500px); */
 }
 .home__imgSlide li {
