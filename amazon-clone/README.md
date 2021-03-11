@@ -210,3 +210,67 @@ const updateWidth = () => {
   </ol>
 </div>
 ```
+
+## Product.js
+
+### img 줄일 때 가운데 보여주기
+
+<img src="https://user-images.githubusercontent.com/60434382/110723234-13bf4580-8257-11eb-8e31-59b46dffcecc.png" width='300px'>
+<img src="https://user-images.githubusercontent.com/60434382/110723280-23d72500-8257-11eb-9232-936fc38bb145.png" width='250px'>
+
+**마크업**
+
+```jsx
+<div className="product__img">
+  <img src={productInfo[0]} alt="" />
+</div>
+```
+
+**CSS**
+
+```css
+.product__img {
+  margin: 0 20px;
+  overflow: hidden;
+  position: relative;
+  height: 304px;
+}
+.product__img img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-height: 100%;
+  height: 100%;
+  min-width: 100%;
+  transform: translate(-50%, -50%);
+}
+```
+
+img태그에 position: absolute;를 주고 transform 으로 위치조절을 해서 화면 리사이징 할 때 이미지가 가운데를 가리키도록 했다.
+
+### img background 넣기
+
+![bgc](https://user-images.githubusercontent.com/60434382/110724147-94327600-8258-11eb-98c2-b5450a4155b0.png)
+
+**CSS**
+
+```css
+.product__imgLink {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 164, 180, 0.05);
+  cursor: pointer;
+  z-index: 1;
+}
+```
+
+이미지 자체에 흰 배경화면이 있어서 img 태그를 감싼 div 에 배경색을 넣으면 이미지부분은 하얗고 그 나머지 부분만 색 지정이 되는 문제가 있었다.
+
+그래서 a태그로 이미지를 감싸고 position: absolute; 를 주어 색 지정이 될 부분만큼 크기를 정했다.
+배경색은 투명도를 넣어서 지정해주었다.
+z-index 를 넣어서 overlay 가 되게끔 설정했다.
