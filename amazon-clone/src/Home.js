@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import Product from "./Product";
 import "./home.css";
 import BackImg from "./BackImg";
 import background1 from "./images/sub/background1.jpg";
@@ -49,6 +50,7 @@ function Home() {
 
   return (
     <div className="home">
+      {/* 이전 다음 버튼 */}
       <div className="home__arrow">
         <a onClick={onClickPrev} style={{ left: `${arrowPosition}px` }}>
           <ArrowBackIosIcon className="arrow back__arrow" />
@@ -64,6 +66,7 @@ function Home() {
           <ArrowForwardIosIcon className="arrow forward__arrow" />
         </a>
       </div>
+      {/* 이미지 슬라이드 */}
       <ol
         className="home__imgSlide"
         style={{
@@ -106,6 +109,78 @@ function Home() {
           imgAlt="background5 - Shop toys and games"
           screenWidth={screenWidth}
           show={counter === 4 ? "visible" : "hidden"}
+        />
+      </ol>
+      {/* Product Component */}
+      <ol className="product__ol">
+        <Product
+          className="product product__show"
+          title="Hi, Yonyas"
+          subtitle="Recommendations for you"
+          profileImg="/images/product-profile.jfif"
+          productInfo={[
+            { imgSrc: "/images/product1-1.jfif", imgDesc: "Your Orders" },
+            { imgSrc: "/images/product1-2.jfif", imgDesc: "Electronics" },
+            {
+              imgSrc: "/images/product1-3.jfif",
+              imgDesc: "Computers & Accessories",
+            },
+            { imgSrc: "/images/product1-4.jfif", imgDesc: "Home & Kitchen" },
+          ]}
+        />
+        <Product
+          className="product product__show"
+          title="Shop by Category"
+          productInfo={[
+            {
+              imgSrc: "/images/product2-1.jpg",
+              imgDesc: "Computers & Accessories",
+            },
+            { imgSrc: "/images/product2-2.jpg", imgDesc: "Video Games" },
+            {
+              imgSrc: "/images/product2-3.jpg",
+              imgDesc: "Baby",
+            },
+            { imgSrc: "/images/product2-4.jpg", imgDesc: "Toys & Games" },
+          ]}
+          imageInfo=""
+          linkMsg="Shop now"
+        />
+        <Product
+          className="product product__show"
+          title="Shop top categories"
+          productInfo={["/images/product3.jpg"]}
+          linkMsg="See more"
+        />
+        <Product
+          className="product product__show"
+          title="Deals & Promotions"
+          productInfo={["/images/product4.jpg"]}
+          linkMsg="Shop now"
+        />
+        <Product
+          className="product product product__show"
+          title="Get fit at home"
+          productInfo={["/images/product5.jpg"]}
+          linkMsg="Explore now"
+        />
+        <Product
+          className="product product__show"
+          title="AmazonBasics"
+          productInfo={["/images/product6.jpg"]}
+          linkMsg="See more"
+        />
+        <Product
+          className="product product__hide"
+          title="Computers & Accessories"
+          productInfo={["/images/product7.jpg"]}
+          linkMsg="Shop now"
+        />
+        <Product
+          className="product product__hide"
+          title="Electronics"
+          productInfo={["/images/product8.jpg"]}
+          linkMsg="See more"
         />
       </ol>
     </div>
